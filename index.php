@@ -10,9 +10,10 @@ $apps = [
         'color_glow'  => 'rgba(0,180,216,.22)',
         'badge'       => 'Finance',
         'envs' => [
-            ['label'=>'Local',   'url'=>'http://10.10.5.60/ap',             'icon'=>'fa-server'],
-            ['label'=>'Online',  'url'=>'http://nag.ddns.net/ap',           'icon'=>'fa-globe'],
-            ['label'=>'Develop', 'url'=>'http://10.10.5.49/ap_dev',         'icon'=>'fa-code'],
+            ['label'=>'10.10.5.60', 'url'=>'http://10.10.5.60/ap',          'icon'=>'fa-server',  'cls'=>'env-local1'],
+            ['label'=>'10.10.5.12', 'url'=>'http://10.10.5.12/ap',          'icon'=>'fa-server',  'cls'=>'env-local2'],
+            ['label'=>'Online',     'url'=>'http://nag.ddns.net/ap',         'icon'=>'fa-globe',   'cls'=>'env-online'],
+            ['label'=>'Develop',    'url'=>'http://10.10.5.49/ap_dev',       'icon'=>'fa-code',    'cls'=>'env-develop'],
         ],
     ],
     [
@@ -25,9 +26,10 @@ $apps = [
         'color_glow'  => 'rgba(16,185,129,.22)',
         'badge'       => 'Finance',
         'envs' => [
-            ['label'=>'Local',   'url'=>'http://10.10.5.60/ar',             'icon'=>'fa-server'],
-            ['label'=>'Online',  'url'=>'http://nag.ddns.net/ar',           'icon'=>'fa-globe'],
-            ['label'=>'Develop', 'url'=>'http://10.10.5.49/ar_dev',         'icon'=>'fa-code'],
+            ['label'=>'10.10.5.60', 'url'=>'http://10.10.5.60/ar',          'icon'=>'fa-server',  'cls'=>'env-local1'],
+            ['label'=>'10.10.5.12', 'url'=>'http://10.10.5.12/ar',          'icon'=>'fa-server',  'cls'=>'env-local2'],
+            ['label'=>'Online',     'url'=>'http://nag.ddns.net/ar',         'icon'=>'fa-globe',   'cls'=>'env-online'],
+            ['label'=>'Develop',    'url'=>'http://10.10.5.49/ar_dev',       'icon'=>'fa-code',    'cls'=>'env-develop'],
         ],
     ],
     [
@@ -40,9 +42,10 @@ $apps = [
         'color_glow'  => 'rgba(167,139,250,.22)',
         'badge'       => 'Operations',
         'envs' => [
-            ['label'=>'Local',   'url'=>'http://10.10.5.62:8080/erp/',         'icon'=>'fa-server'],
-            ['label'=>'Online',  'url'=>'http://nag.ddns.net:8080/erp/',        'icon'=>'fa-globe'],
-            ['label'=>'Develop', 'url'=>'http://localhost:8082/signalbit_erp/', 'icon'=>'fa-code'],
+            ['label'=>'10.10.5.62', 'url'=>'http://10.10.5.62:8080/erp/',         'icon'=>'fa-server',  'cls'=>'env-local1'],
+            ['label'=>'10.10.5.12', 'url'=>'http://10.10.5.12:8080/erp/',         'icon'=>'fa-server',  'cls'=>'env-local2'],
+            ['label'=>'Online',     'url'=>'http://nag.ddns.net:8080/erp/',        'icon'=>'fa-globe',   'cls'=>'env-online'],
+            ['label'=>'Develop',    'url'=>'http://localhost:8082/signalbit_erp/', 'icon'=>'fa-code',    'cls'=>'env-develop'],
         ],
     ],
 ];
@@ -313,9 +316,10 @@ html,body{
   text-transform:uppercase;color:var(--muted);
   margin-bottom:10px;
 }
-.env-row{display:flex;gap:8px;}
+.env-row{display:flex;flex-wrap:wrap;gap:8px;}
 .env-btn{
-  flex:1;display:flex;flex-direction:column;align-items:center;
+  flex:1 1 calc(50% - 4px);min-width:0;
+  display:flex;flex-direction:column;align-items:center;
   gap:5px;padding:10px 8px;border-radius:var(--radius-btn);
   text-decoration:none;color:var(--text);
   background:var(--faint);
@@ -324,6 +328,8 @@ html,body{
   transition:background .22s,border-color .22s,transform .22s,box-shadow .22s;
   position:relative;overflow:hidden;
 }
+/* 3-button row: all on one line */
+.env-row:has(.env-btn:nth-child(3):last-child) .env-btn{flex:1 1 0;}
 .env-btn::before{
   content:'';position:absolute;inset:0;border-radius:var(--radius-btn);
   background:var(--btn-color,rgba(255,255,255,.06));
@@ -339,9 +345,10 @@ html,body{
 .env-btn:active{transform:translateY(0);}
 .env-btn i{font-size:13px;color:var(--btn-icon,var(--muted));transition:color .22s;}
 .env-btn:hover i{color:#fff;}
-.env-local  {--btn-color:rgba(14,165,233,.18); --btn-border:rgba(14,165,233,.45); --btn-glow:rgba(14,165,233,.25); --btn-icon:#38bdf8;}
-.env-online {--btn-color:rgba(16,185,129,.18); --btn-border:rgba(16,185,129,.45); --btn-glow:rgba(16,185,129,.25); --btn-icon:#34d399;}
-.env-develop{--btn-color:rgba(245,158,11,.16);  --btn-border:rgba(245,158,11,.42); --btn-glow:rgba(245,158,11,.22); --btn-icon:#fbbf24;}
+.env-local1 {--btn-color:rgba(14,165,233,.18);  --btn-border:rgba(14,165,233,.45);  --btn-glow:rgba(14,165,233,.25);  --btn-icon:#38bdf8;}
+.env-local2 {--btn-color:rgba(99,102,241,.18);   --btn-border:rgba(99,102,241,.45);   --btn-glow:rgba(99,102,241,.25);   --btn-icon:#a5b4fc;}
+.env-online {--btn-color:rgba(16,185,129,.18);   --btn-border:rgba(16,185,129,.45);   --btn-glow:rgba(16,185,129,.25);   --btn-icon:#34d399;}
+.env-develop{--btn-color:rgba(245,158,11,.16);   --btn-border:rgba(245,158,11,.42);   --btn-glow:rgba(245,158,11,.22);   --btn-icon:#fbbf24;}
 
 /* divider between card-body and footer */
 .card-sep{
@@ -428,9 +435,7 @@ html,body{
 
   <!-- Cards -->
   <div class="grid">
-    <?php foreach ($apps as $app):
-      $envClasses = ['env-local','env-online','env-develop'];
-    ?>
+    <?php foreach ($apps as $app): ?>
     <div class="card" style="
       --c:  <?= $app['color'] ?>;
       --cd: <?= $app['color_dim'] ?>;
@@ -460,7 +465,7 @@ html,body{
         <div class="env-row">
           <?php foreach ($app['envs'] as $i => $env): ?>
           <a href="<?= htmlspecialchars($env['url']) ?>" target="_blank"
-             class="env-btn <?= $envClasses[$i] ?>"
+             class="env-btn <?= $env['cls'] ?>"
              title="<?= htmlspecialchars($env['url']) ?>">
             <i class="fa-solid <?= $env['icon'] ?>"></i>
             <?= htmlspecialchars($env['label']) ?>
@@ -478,7 +483,8 @@ html,body{
       &copy; <?= date('Y') ?> <?= htmlspecialchars($company) ?>
     </span>
     <div class="bottom-pills">
-      <div class="env-legend"><span style="background:#38bdf8;"></span> Local</div>
+      <div class="env-legend"><span style="background:#38bdf8;"></span> Local (60)</div>
+      <div class="env-legend"><span style="background:#a5b4fc;"></span> Local (12)</div>
       <div class="env-legend"><span style="background:#34d399;"></span> Online</div>
       <div class="env-legend"><span style="background:#fbbf24;"></span> Develop</div>
     </div>
